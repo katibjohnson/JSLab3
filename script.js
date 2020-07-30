@@ -27,6 +27,13 @@ let submissions = [
   },
 ];
 
+// 2. Declare a function named addSubmission
+// ○ Parameter(s): array, newName, newScore, newDate
+// ○ Functionality: construct an object and push it into the array.The object must
+// have the same properties as the objects already in the array.Use conditional
+// statements to set the value for the passed property to true if the score is
+// greater than or equal to 60 and false otherwise.
+
 const addSubmission = (array, newName, newScore, newDate) => {
   let newSubmission = {
     name: newName,
@@ -37,11 +44,22 @@ const addSubmission = (array, newName, newScore, newDate) => {
   array.push(newSubmission);
 };
 
-console.log(submissions);
+// addSubmission(submissions, "Kati", 100, "2020-07-29");
+// console.log(submissions);
+
+// 3. Declare a function named deleteSubmissionByIndex
+// ○ Parameter(s): array, index
+// ○ Functionality: remove the object from the array at the specified index using
+// the splice method.
 
 const deleteSubmissionByIndex = (array, index) => {
   array.splice(index, 1);
 };
+
+// 4. Declare a function named deleteSubmissionByName
+// ○ Parameter(s): array, name
+// ○ Functionality: remove the object from the array that has the provided name.
+// Incorporate the findIndex method and the splice method.
 
 const deleteSubmissionByName = (array, name) => {
   let targetedindex = array.findIndex((student) => {
@@ -53,7 +71,7 @@ const deleteSubmissionByName = (array, name) => {
 // deleteSubmissionByName(submissions, "Jane");
 // console.log(submissions);
 
-// Declare a function named editSubmission
+// 5. Declare a function named editSubmission
 // ○ Parameter(s): array, index, score
 // ○ Functionality: update an object’s score in the array at the specified index.Use
 // conditional statements to set the value for the passed property to true if the
@@ -67,7 +85,7 @@ const editSubmission = (array, index, updatedscore) => {
 // editSubmission(submissions, 0, 7);
 // console.log(submissions);
 
-// Declare a function named findSubmissionByName
+// 6. Declare a function named findSubmissionByName
 // ○ Parameter(s): array, name
 // ○ Functionality: return the object in the array that has the provided name.Use the
 // find method.
@@ -79,40 +97,62 @@ const findSubmissionByName = (array, name) => {
   return foundobject;
 };
 
-console.log(findSubmissionByName(submissions, "Jane"));
+// console.log(findSubmissionByName(submissions, "Jane"));
 
-// Declare a function named findLowestScore
+// 7. Declare a function named findLowestScore
 // ○ Parameter(s): array
 // ○ Functionality: return the object in the array that has the lowest score.Use the
 // forEach method to loop through the whole array.
 
+// const findLowestScore = (array) => {
+//   let lowestscore = array[0];
+//   array.forEach((thisobject) => {
+//     if (thisobject.score < lowestscore.score) {
+//       lowestscore = thisobject;
+//     }
+//   });
+//   return lowestscore;
+// };
+
+// console.log(findLowestScore(submissions));
+
+//alt version using ternary operator shortcut (of it statement)
+
 const findLowestScore = (array) => {
   let lowestscore = array[0];
-  array.forEach((thisobject) => {
-    if (thisobject.score < lowestscore.score) {
-      lowestscore = thisobject;
-    }
+  array.forEach((student) => {
+    student.score < lowestscore.score ? (lowestscore = student) : null;
   });
   return lowestscore;
 };
 
-console.log(findLowestScore(submissions));
+// console.log(findLowestScore(submissions));
 
-// Declare a function named findAverageScore
+// 8. Declare a function named findAverageScore
 // ○ Parameter(s): array
 // ○ Functionality: return the average quiz score.Use a for...of loop.
 
+// const findAverageScore = (array) => {
+//   let sum = 0;
+//   let counter = 0;
+//   for (let student of array) {
+//     sum += student.score;
+//     counter++;
+//   }
+//   return sum / counter;
+// };
+
+// alt version using .length method
+
 const findAverageScore = (array) => {
   let sum = 0;
-  let counter = 0;
-  for (let item of array) {
-    sum += item.score;
-    counter++;
+  for (let student of array) {
+    sum += student.score;
   }
-  return sum / counter;
+  return sum / array.length;
 };
 
-console.log(findAverageScore(submissions));
+// console.log(findAverageScore(submissions));
 
 // 9. Declare a function named filterPassing
 // ○ Parameter(s): array
@@ -126,7 +166,7 @@ const filterPassing = (array) => {
   return passingStudents;
 };
 
-console.log(filterPassing(submissions));
+// console.log(filterPassing(submissions));
 
 // 10. Declare a function named filter90AndAbove
 // ○ Parameter(s): array
@@ -140,9 +180,9 @@ const filter90AndAbove = (array) => {
   return excellentStudents;
 };
 
-console.log(filter90AndAbove(submissions));
+// console.log(filter90AndAbove(submissions));
 
-// Create a function named createRange
+// EC 1. Create a function named createRange
 // ○ Parameter(s): start, end
 // ○ Functionality: construct and return an array of integers starting with the start
 // parameter and ending at the end parameter.e.g createRange(2, 5) returns
@@ -156,7 +196,7 @@ const createRange = (start, end) => {
   return newArray;
 };
 
-console.log(createRange(2, 5));
+// console.log(createRange(2, 5));
 
 // 2. Create a function named countElements
 // ○ Parameter(s): array(an array of strings)
